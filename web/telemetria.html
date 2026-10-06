@@ -2,48 +2,69 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Racing - Ranking Telemetría</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
-        h1 { color: #333; }
-        nav a { margin-right: 15px; text-decoration: none; color: #0066cc; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
-        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f9; color: #333; }
+        header { background: #dc3545; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+        h1 { margin: 0; font-size: 24px; }
+        nav { margin-top: 15px; }
+        nav a { margin: 0 10px; text-decoration: none; color: #fff; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 4px; font-weight: bold; transition: background 0.3s; }
+        nav a:hover { background: rgba(255,255,255,0.4); }
+        hr { border: 0; border-top: 1px solid #ddd; margin: 20px 0; }
+        h2 { color: #444; font-size: 20px; }
+        .table-container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
         th { background-color: #dc3545; color: white; }
+        tr:hover { background-color: #f1f1f1; }
+        .highlight { color: #dc3545; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h1>Car Racing - Ranking de Velocidad y Telemetría</h1>
-    <nav>
-        <a href="/">Inicio (Todas las Pruebas)</a>
-        <a href="/frenado_ir">Módulo Frenado IR</a>
-        <a href="/telemetria">Telemetría de Velocidad</a>
-    </nav>
-    <hr>
-    <h2>Métricas Ordenadas por Velocidad Máxima</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Conductor / Operador</th>
-                <th>Velocidad Máx (km/h)</th>
-                <th>Vueltas Completadas</th>
-                <th>Tiempo Total (s)</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for t in telemetria %}
-            <tr>
-                <td>{{ t['conductor'] }}</td>
-                <td><strong>{{ t['velocidad_max'] }} km/h</strong></td>
-                <td>{{ t['vueltas_completadas'] }}</td>
-                <td>{{ t['tiempo_segundos'] }} s</td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="4">No hay datos de telemetría disponibles.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+    <header>
+        <h1>Car Racing - Ranking de Velocidad y Telemetría</h1>
+        <nav>
+            <a href="index.html">Inicio (Todas las Pruebas)</a>
+            <a href="frenado.html">Módulo Frenado IR</a>
+            <a href="telemetria.html">Telemetria de Velocidad</a>
+        </nav>
+    </header>
+
+    <div class="table-container">
+        <h2>Métricas Ordenadas por Velocidad Máxima</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Conductor / Operador</th>
+                    <th>Velocidad Máx (km/h)</th>
+                    <th>Vueltas Completadas</th>
+                    <th>Tiempo Total (s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mateo R.</td>
+                    <td><span class="highlight">48.5 km/h</span></td>
+                    <td>5</td>
+                    <td>26.9 s</td>
+                </tr>
+                <tr>
+                    <td>Thiago G.</td>
+                    <td><span class="highlight">45.2 km/h</span></td>
+                    <td>5</td>
+                    <td>28.4 s</td>
+                </tr>
+                <tr>
+                    <td>Lucas M.</td>
+                    <td><span class="highlight">42.8 km/h</span></td>
+                    <td>5</td>
+                    <td>30.1 s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>
