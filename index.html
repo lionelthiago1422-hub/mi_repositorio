@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Racing - Historial General</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        nav a { margin-right: 15px; text-decoration: none; color: #0066cc; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #0066cc; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Car Racing - Control y Telemetría</h1>
+    <nav>
+        <a href="/">Inicio (Todas las Pruebas)</a>
+        <a href="/frenado_ir">Módulo Frenado IR</a>
+        <a href="/telemetria">Telemetría de Velocidad</a>
+    </nav>
+    <hr>
+    <h2>Todas las Pruebas Registradas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Conductor</th>
+                <th>Velocidad Máx (km/h)</th>
+                <th>Vueltas</th>
+                <th>Tiempo (s)</th>
+                <th>Estado Sensores</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in pruebas %}
+            <tr>
+                <td>{{ p['id'] }}</td>
+                <td>{{ p['conductor'] }}</td>
+                <td>{{ p['velocidad_max'] }}</td>
+                <td>{{ p['vueltas_completadas'] }}</td>
+                <td>{{ p['tiempo_segundos'] }}</td>
+                <td>{{ p['estado_sensores'] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No hay pruebas registradas en la base de datos.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

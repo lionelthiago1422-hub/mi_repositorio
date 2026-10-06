@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Racing - Ranking Telemetría</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        nav a { margin-right: 15px; text-decoration: none; color: #0066cc; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Car Racing - Ranking de Velocidad y Telemetría</h1>
+    <nav>
+        <a href="/">Inicio (Todas las Pruebas)</a>
+        <a href="/frenado_ir">Módulo Frenado IR</a>
+        <a href="/telemetria">Telemetría de Velocidad</a>
+    </nav>
+    <hr>
+    <h2>Métricas Ordenadas por Velocidad Máxima</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Conductor / Operador</th>
+                <th>Velocidad Máx (km/h)</th>
+                <th>Vueltas Completadas</th>
+                <th>Tiempo Total (s)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in telemetria %}
+            <tr>
+                <td>{{ t['conductor'] }}</td>
+                <td><strong>{{ t['velocidad_max'] }} km/h</strong></td>
+                <td>{{ t['vueltas_completadas'] }}</td>
+                <td>{{ t['tiempo_segundos'] }} s</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No hay datos de telemetría disponibles.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
